@@ -8,6 +8,11 @@ Encore
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
 
+	.copyFiles({
+		from: './assets/img',
+		to: 'images/[path][name].[ext]',
+	})
+
     // Entries config
     .addEntry('app', './assets/js/app.js')
     //.addEntry('page1', './assets/js/page1.js')
@@ -18,11 +23,8 @@ Encore
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
 
-    // uncomment if you use LESS files
-	//.enableLessLoader()
-
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+	.enableLessLoader()
+	.autoProvidejQuery()
 ;
 
 module.exports = Encore.getWebpackConfig();
